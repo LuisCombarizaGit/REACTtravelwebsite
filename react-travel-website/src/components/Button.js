@@ -2,7 +2,8 @@ import React from "react";
 import "./Button.css";
 import { Link } from "react-router-dom";
 
-const STYLES = ["btn--primary", "btn--outline"];
+const STYLES = ["btn--primary", "btn--outline", "btn--test"];
+
 const SIZES = ["btn--medium", "btn--large"];
 
 export const Button = ({
@@ -10,7 +11,7 @@ export const Button = ({
   type,
   onClick,
   buttonStyle,
-  buttomSize,
+  buttonSize,
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle

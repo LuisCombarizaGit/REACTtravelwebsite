@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { Button } from "./Button";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -18,25 +18,30 @@ function Navbar() {
     }
   };
 
+  useEffect(() => {
+    showButton();
+  }, []);
+
   window.addEventListener("resize", showButton);
 
   return (
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
-            Xplore <i className="fas fa-globe-americas" />
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            Xplore {"  ."}
+            <i className="fas fa-globe-americas" />
           </Link>
-          <div className="manu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li ClassName="nav-item">
+            <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
-            <li ClassName="nav-item">
+            <li className="nav-item">
               <Link
                 to="/services"
                 className="nav-links"
@@ -45,7 +50,7 @@ function Navbar() {
                 Services
               </Link>
             </li>
-            <li ClassName="nav-item">
+            <li className="nav-item">
               <Link
                 to="/products"
                 className="nav-links"
@@ -54,7 +59,8 @@ function Navbar() {
                 Products
               </Link>
             </li>
-            <li ClassName="nav-item">
+
+            <li>
               <Link
                 to="/sign-up"
                 className="nav-links-mobile"
